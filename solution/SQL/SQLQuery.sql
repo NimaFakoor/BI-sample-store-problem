@@ -1,0 +1,182 @@
+/******
+1
+******/
+
+USE [master]
+GO
+
+DROP DATABASE [Store_BI]
+GO
+
+CREATE DATABASE [Store_BI]
+ CONTAINMENT = NONE
+ ON  PRIMARY 
+( NAME = N'Store_BI', FILENAME = N'Store_BI.mdf' , SIZE = 16384KB , MAXSIZE = UNLIMITED, FILEGROWTH = 1024KB )
+ LOG ON 
+( NAME = N'Store_BI_log', FILENAME = N'Store_BI_log.ldf' , SIZE = 1024KB , MAXSIZE = 2048GB , FILEGROWTH = 10%)
+GO
+
+ALTER DATABASE [Store_BI] SET COMPATIBILITY_LEVEL = 110
+GO
+
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [Store_BI].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+
+/*
+ALTER DATABASE [Store_BI] SET ANSI_NULL_DEFAULT OFF 
+GO
+
+ALTER DATABASE [Store_BI] SET ANSI_NULLS OFF 
+GO
+
+ALTER DATABASE [Store_BI] SET ANSI_PADDING OFF 
+GO
+
+ALTER DATABASE [Store_BI] SET ANSI_WARNINGS OFF 
+GO
+
+ALTER DATABASE [Store_BI] SET ARITHABORT OFF 
+GO
+
+ALTER DATABASE [Store_BI] SET AUTO_CLOSE OFF 
+GO
+
+ALTER DATABASE [Store_BI] SET AUTO_SHRINK OFF 
+GO
+
+ALTER DATABASE [Store_BI] SET AUTO_UPDATE_STATISTICS ON 
+GO
+
+ALTER DATABASE [Store_BI] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+
+ALTER DATABASE [Store_BI] SET CURSOR_DEFAULT  GLOBAL 
+GO
+
+ALTER DATABASE [Store_BI] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+
+ALTER DATABASE [Store_BI] SET NUMERIC_ROUNDABORT OFF 
+GO
+
+ALTER DATABASE [Store_BI] SET QUOTED_IDENTIFIER OFF 
+GO
+
+ALTER DATABASE [Store_BI] SET RECURSIVE_TRIGGERS OFF 
+GO
+
+ALTER DATABASE [Store_BI] SET  DISABLE_BROKER 
+GO
+
+ALTER DATABASE [Store_BI] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+
+ALTER DATABASE [Store_BI] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+
+ALTER DATABASE [Store_BI] SET TRUSTWORTHY OFF 
+GO
+
+ALTER DATABASE [Store_BI] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+
+ALTER DATABASE [Store_BI] SET PARAMETERIZATION SIMPLE 
+GO
+
+ALTER DATABASE [Store_BI] SET READ_COMMITTED_SNAPSHOT OFF 
+GO
+
+ALTER DATABASE [Store_BI] SET HONOR_BROKER_PRIORITY OFF 
+GO
+
+ALTER DATABASE [Store_BI] SET RECOVERY FULL 
+GO
+
+ALTER DATABASE [Store_BI] SET  MULTI_USER 
+GO
+
+ALTER DATABASE [Store_BI] SET PAGE_VERIFY CHECKSUM  
+GO
+
+ALTER DATABASE [Store_BI] SET DB_CHAINING OFF 
+GO
+
+ALTER DATABASE [Store_BI] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+GO
+
+ALTER DATABASE [Store_BI] SET TARGET_RECOVERY_TIME = 0 SECONDS 
+GO
+
+ALTER DATABASE [Store_BI] SET DELAYED_DURABILITY = DISABLED 
+GO
+
+ALTER DATABASE [Store_BI] SET  READ_WRITE 
+GO
+*/
+
+/******
+CREATE TABLE
+******/
+
+USE [Store_BI]
+GO
+
+DROP TABLE [dbo].[Table_store]
+GO
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Table_store](
+	[store] [nvarchar](50) NULL,
+	[Date] [nvarchar](50) NULL,
+	[itemcode] [nvarchar](50) NULL,
+	[Department] [nvarchar](50) NULL,
+	[Online Sale Amount-IRR] [nvarchar](50) NULL,
+	[Offline Sale Amount -IRR] [nvarchar](50) NULL,
+	[Online Qty] [nvarchar](50) NULL,
+	[Offline QtyOffline Qty
+Offline Qty] [nvarchar](50) NULL
+) ON [PRIMARY]
+
+GO
+
+/******
+2
+
+# copying data row #
+******/
+
+/******
+3
+******/
+
+USE [Store_BI]
+GO
+
+SELECT [Online Qty]
+      ,[Offline QtyOffline Qty
+Offline Qty]
+  FROM [dbo].[Table_store] WHERE [store] = 'Eram'
+GO
+
+/******
+4
+******/
+
+USE [Store_BI]
+GO
+
+SELECT [Online Sale Amount-IRR]
+      ,[Offline Sale Amount -IRR]
+  FROM [dbo].[Table_store]
+  WHERE [store]='Eram' AND [Date]='6/1/2022'
+GO
+/* in this query [store] repersent store name and [Date] used for month */
+
